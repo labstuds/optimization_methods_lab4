@@ -6,3 +6,4 @@ C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthL
 C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.csproj.GenerateResource.Cache
 C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.exe
 C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.pdb
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\LoggerEvsLib.dll

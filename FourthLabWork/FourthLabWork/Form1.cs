@@ -6,44 +6,27 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using LoggerEvsLib;
+
 
 namespace FourthLabWork
 {
     public partial class Form1 : Form
     {
+        Func<Vector2, double> currentTaskFunction;
+
         public Form1()
         {
             InitializeComponent();
-        }
+        }      
 
-        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        private void btnCount_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+            // Считать входные данные            
+            Vector2 startPoint = new Vector2((double)nudX1.Value, (double)nudX2.Value);
+            double r0 = (double)nudR0.Value;
+            double z = (double)nudZ.Value;
+            double eps = (double)nudEps.Value;
+        }       
     }
 }
