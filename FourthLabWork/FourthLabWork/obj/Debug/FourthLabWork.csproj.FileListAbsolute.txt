@@ -1,0 +1,8 @@
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\FourthLabWork.exe
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\FourthLabWork.pdb
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.csprojResolveAssemblyReference.cache
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.Form1.resources
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.Properties.Resources.resources
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.csproj.GenerateResource.Cache
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.exe
+C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.pdb
