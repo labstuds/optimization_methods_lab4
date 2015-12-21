@@ -15,7 +15,7 @@ namespace FourthLabWork
     {
         // Учебные и тестовые задачи
         List<MinimizationTask> tasks = new List<MinimizationTask>();
-        
+        int currentTaskIndex = 0;
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +29,12 @@ namespace FourthLabWork
 
         public double testLimit(Vector2 arg)
         {
-            return arg.X + arg.Y - 2;
+            return - arg.X - arg.Y - 2;
+        }
+
+        public double secondTestLimit(Vector2 arg)
+        {
+            return arg.X - 1;
         }
 
         /// <summary>
@@ -38,9 +43,8 @@ namespace FourthLabWork
         private void InitTasks()
         {
             // Тестовая задача 1.1
-            List<Limitation> testTaskLimits = new List<Limitation>();
-            testTaskLimits.Add(new Limitation(testLimit, true, false));            
-            tasks.Add(new MinimizationTask(testTaskLimits, testFunc));
+            MinimizationTask testTask = new MinimizationTask(new List<Limitation> { new Limitation(testLimit,true,true,false),new Limitation(secondTestLimit,true,true,false)}, testFunc);
+            tasks.Add(testTask);
             // Учебная задача 2.1
             // Учебная задача 2.2
             // Учебная задача 2.3
@@ -49,10 +53,42 @@ namespace FourthLabWork
         private void btnCount_Click(object sender, EventArgs e)
         {
             // Считать входные данные            
-            Vector2 startPoint = new Vector2((double)nudX1.Value, (double)nudX2.Value);
-            double r0 = (double)nudR0.Value;
-            double z = (double)nudZ.Value;
-            double eps = (double)nudEps.Value;
+            tasks[currentTaskIndex].eps = (double)nudEps.Value;
+            tasks[currentTaskIndex].z = (double)nudZ.Value;
+            tasks[currentTaskIndex].x0 = new Vector2((double)nudX1.Value, (double)nudX2.Value);
+            tasks[currentTaskIndex].r0 = (double)nudR0.Value;
+            Minimizer min = new Minimizer(tasks[currentTaskIndex]);
+            min.minimize();
+            answerBox.Text = String.Format("Minimum f({0}) = {1}", tasks[currentTaskIndex].MinimumPoint, tasks[currentTaskIndex].MinimumValue);
+        }
+
+        private void rbTestFunc_CheckedChanged(object sender, EventArgs e)
+        {
+            //тестовая
+            setTestTask();
+        }
+
+        private void setTestTask()
+        {
+            currentTaskIndex = 0;
+        }
+
+        private void rbFunc2_1_CheckedChanged(object sender, EventArgs e)
+        {
+            //2.1
+            currentTaskIndex = 1;
+        }
+
+        private void rbFunc2_2_CheckedChanged(object sender, EventArgs e)
+        {
+            //2.2
+            currentTaskIndex = 2;
+        }
+
+        private void rbFunc2_3_CheckedChanged(object sender, EventArgs e)
+        {
+            //2.3
+            currentTaskIndex = 3;
         }       
     }
 }

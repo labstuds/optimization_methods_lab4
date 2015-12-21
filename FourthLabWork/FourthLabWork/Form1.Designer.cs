@@ -37,7 +37,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnCount = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.answerBox = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.nudR0 = new System.Windows.Forms.NumericUpDown();
             this.nudZ = new System.Windows.Forms.NumericUpDown();
@@ -104,9 +104,9 @@
             this.rbFunc2_3.Name = "rbFunc2_3";
             this.rbFunc2_3.Size = new System.Drawing.Size(86, 17);
             this.rbFunc2_3.TabIndex = 3;
-            this.rbFunc2_3.TabStop = true;
             this.rbFunc2_3.Text = "Учебная 2.3";
             this.rbFunc2_3.UseVisualStyleBackColor = true;
+            this.rbFunc2_3.CheckedChanged += new System.EventHandler(this.rbFunc2_3_CheckedChanged);
             // 
             // rbFunc2_2
             // 
@@ -115,9 +115,9 @@
             this.rbFunc2_2.Name = "rbFunc2_2";
             this.rbFunc2_2.Size = new System.Drawing.Size(86, 17);
             this.rbFunc2_2.TabIndex = 2;
-            this.rbFunc2_2.TabStop = true;
             this.rbFunc2_2.Text = "Учебная 2.2";
             this.rbFunc2_2.UseVisualStyleBackColor = true;
+            this.rbFunc2_2.CheckedChanged += new System.EventHandler(this.rbFunc2_2_CheckedChanged);
             // 
             // rbFunc2_1
             // 
@@ -126,13 +126,14 @@
             this.rbFunc2_1.Name = "rbFunc2_1";
             this.rbFunc2_1.Size = new System.Drawing.Size(86, 17);
             this.rbFunc2_1.TabIndex = 1;
-            this.rbFunc2_1.TabStop = true;
             this.rbFunc2_1.Text = "Учебная 2.1";
             this.rbFunc2_1.UseVisualStyleBackColor = true;
+            this.rbFunc2_1.CheckedChanged += new System.EventHandler(this.rbFunc2_1_CheckedChanged);
             // 
             // rbTestFunc
             // 
             this.rbTestFunc.AutoSize = true;
+            this.rbTestFunc.Checked = true;
             this.rbTestFunc.Location = new System.Drawing.Point(16, 31);
             this.rbTestFunc.Name = "rbTestFunc";
             this.rbTestFunc.Size = new System.Drawing.Size(73, 17);
@@ -140,12 +141,13 @@
             this.rbTestFunc.TabStop = true;
             this.rbTestFunc.Text = "Тестовая";
             this.rbTestFunc.UseVisualStyleBackColor = true;
+            this.rbTestFunc.CheckedChanged += new System.EventHandler(this.rbTestFunc_CheckedChanged);
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnCount);
             this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Controls.Add(this.answerBox);
             this.groupBox6.Location = new System.Drawing.Point(10, 174);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(688, 45);
@@ -172,12 +174,12 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Минимум:";
             // 
-            // textBox1
+            // answerBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(394, 20);
-            this.textBox1.TabIndex = 0;
+            this.answerBox.Location = new System.Drawing.Point(86, 15);
+            this.answerBox.Name = "answerBox";
+            this.answerBox.Size = new System.Drawing.Size(394, 20);
+            this.answerBox.TabIndex = 0;
             // 
             // groupBox5
             // 
@@ -197,19 +199,24 @@
             // 
             this.nudR0.DecimalPlaces = 3;
             this.nudR0.Increment = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
-            131072});
+            0});
             this.nudR0.Location = new System.Drawing.Point(244, 45);
             this.nudR0.Maximum = new decimal(new int[] {
-            1,
+            500,
             0,
             0,
             0});
             this.nudR0.Name = "nudR0";
             this.nudR0.Size = new System.Drawing.Size(220, 20);
             this.nudR0.TabIndex = 11;
+            this.nudR0.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // nudZ
             // 
@@ -228,6 +235,11 @@
             this.nudZ.Name = "nudZ";
             this.nudZ.Size = new System.Drawing.Size(79, 20);
             this.nudZ.TabIndex = 10;
+            this.nudZ.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             // 
             // label3
             // 
@@ -273,6 +285,11 @@
             this.nudEps.Name = "nudEps";
             this.nudEps.Size = new System.Drawing.Size(79, 20);
             this.nudEps.TabIndex = 8;
+            this.nudEps.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             // 
             // groupBox4
             // 
@@ -289,6 +306,12 @@
             // 
             // nudX2
             // 
+            this.nudX2.DecimalPlaces = 1;
+            this.nudX2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudX2.Location = new System.Drawing.Point(57, 48);
             this.nudX2.Name = "nudX2";
             this.nudX2.Size = new System.Drawing.Size(120, 20);
@@ -296,6 +319,12 @@
             // 
             // nudX1
             // 
+            this.nudX1.DecimalPlaces = 1;
+            this.nudX1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudX1.Location = new System.Drawing.Point(57, 22);
             this.nudX1.Name = "nudX1";
             this.nudX1.Size = new System.Drawing.Size(120, 20);
@@ -333,6 +362,7 @@
             // rbCarrollFunc
             // 
             this.rbCarrollFunc.AutoSize = true;
+            this.rbCarrollFunc.Checked = true;
             this.rbCarrollFunc.Location = new System.Drawing.Point(16, 28);
             this.rbCarrollFunc.Name = "rbCarrollFunc";
             this.rbCarrollFunc.Size = new System.Drawing.Size(74, 17);
@@ -348,7 +378,6 @@
             this.rbFrischFunc.Name = "rbFrischFunc";
             this.rbFrischFunc.Size = new System.Drawing.Size(62, 17);
             this.rbFrischFunc.TabIndex = 10;
-            this.rbFrischFunc.TabStop = true;
             this.rbFrischFunc.Text = "Фриша";
             this.rbFrischFunc.UseVisualStyleBackColor = true;
             // 
@@ -428,7 +457,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnCount;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox answerBox;
         private System.Windows.Forms.RadioButton rbFunc2_2;
         private System.Windows.Forms.RadioButton rbFunc2_1;
         private System.Windows.Forms.RadioButton rbTestFunc;

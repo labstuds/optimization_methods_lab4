@@ -7,3 +7,13 @@ C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthL
 C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.exe
 C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.pdb
 C:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\LoggerEvsLib.dll
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.exe
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.pdb
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.csprojResolveAssemblyReference.cache
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.Form1.resources
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.Properties.Resources.resources
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\obj\Debug\FourthLabWork.csproj.GenerateResource.Cache
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\FourthLabWork.exe
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\FourthLabWork.pdb
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\MathNet.Numerics.dll
+D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\MathNet.Numerics.xml
