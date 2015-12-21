@@ -17,3 +17,5 @@ D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\FourthL
 D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\FourthLabWork.pdb
 D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\MathNet.Numerics.dll
 D:\Repos\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\MathNet.Numerics.xml
+c:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\MathNet.Numerics.dll
+c:\work\_git\OptimizationMethods\optimization_methods_lab4\FourthLabWork\FourthLabWork\bin\Debug\MathNet.Numerics.xml

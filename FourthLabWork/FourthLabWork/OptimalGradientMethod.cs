@@ -15,7 +15,7 @@ namespace FourthLabWork
         /// <param name="eps">Точность</param>
         /// <param name="taskFunction">Функция для минимизации</param>
         /// <returns></returns>
-        public static Vector2 findMinimum(Vector2 startX, double eps, Func<Vector2, double> taskFunction,MinimizationTask task)
+        public static Vector2 findMinimum(Vector2 startX, double eps, Func<Vector2, double> taskFunction, MinimizationTask task)
         {
             // Точность для метода дихотомии
             double inputOrder = findPositiveOrder(findMax(Math.Abs(startX.X), Math.Abs(startX.Y)));
@@ -35,41 +35,48 @@ namespace FourthLabWork
             int k = 0;            
             while (!answerFound)
             {
-                //LoggerEvs.writeLog(string.Format("ITER {0}:", k));
-                //LoggerEvs.writeLog(string.Format("Step 1: k = {0};", k));
-
-                gradientValue = CountCentralScheme.Instance.countDerivative(0.1, args, taskFunction);
-
-                if (alpha >= 0.00001)
-                    gradientValue = CountCentralScheme.Instance.countDerivative(alpha, args, taskFunction);
-                else 
-                    gradientValue = CountRightScheme.Instance.countDerivative(alpha, args, taskFunction);
-                 
-                //LoggerEvs.writeLog(string.Format("Step 2: gradient is ({0}, {1});", gradientValue.X, gradientValue.Y));
-                // Шаг 3
-                if (gradientValue.getEuclidNorm() <= eps)
+                if (!task.checkLimitations(args))
                 {
-                    // Перейти на шаг 7
                     answerFound = true;
-                    //LoggerEvs.writeLog(string.Format("Step 3: gradient Euclidean norm is <= eps: {0} <= {1}; Go to step 7!", gradientValue.getEuclidNorm(), eps));
                 }
                 else
                 {
-                    // Шаг 4   
-                    // Провести метод одномерной оптимизации
-                    if (alpha >= 0)
+                    //LoggerEvs.writeLog(string.Format("ITER {0}:", k));
+                    //LoggerEvs.writeLog(string.Format("Step 1: k = {0};", k));
+
+                    gradientValue = CountCentralScheme.Instance.countDerivative(0.1, args, taskFunction);
+
+                    if (alpha >= 0.00001)
+                        gradientValue = CountCentralScheme.Instance.countDerivative(alpha, args, taskFunction);
+                    else
+                        gradientValue = CountRightScheme.Instance.countDerivative(alpha, args, taskFunction);
+
+                    //LoggerEvs.writeLog(string.Format("Step 2: gradient is ({0}, {1});", gradientValue.X, gradientValue.Y));
+                    // Шаг 3
+                    if (gradientValue.getEuclidNorm() <= eps)
                     {
-                        Interval alphaValues = DSKMethodCounter.countInterval(taskFunction, alpha, args, gradientValue, DSKStep);
-                        alpha = DichotomyMethodCounter.findMinimum(taskFunction, alphaValues, dichotomyEpsilon, args, gradientValue);
+                        // Перейти на шаг 7
+                        answerFound = true;
+                        //LoggerEvs.writeLog(string.Format("Step 3: gradient Euclidean norm is <= eps: {0} <= {1}; Go to step 7!", gradientValue.getEuclidNorm(), eps));
                     }
-                    //LoggerEvs.writeLog(string.Format("Step 4: Alpha = {0};", alpha));
-                    // Шаг 5
-                    args = args - alpha * gradientValue;
-                    //LoggerEvs.writeLog(string.Format("Step 5: arguments = arguments - alpha * gradientValue = ({0}; {1});", args.X, args.Y));
-                    // Шаг 6
-                    k += 1;
-                    //LoggerEvs.writeLog(string.Format("Step 6: k = k + 1 = {0};", k - 1));
-                }                
+                    else
+                    {
+                        // Шаг 4   
+                        // Провести метод одномерной оптимизации
+                        if (alpha >= 0)
+                        {
+                            Interval alphaValues = DSKMethodCounter.countInterval(taskFunction, alpha, args, gradientValue, DSKStep);
+                            alpha = DichotomyMethodCounter.findMinimum(taskFunction, alphaValues, dichotomyEpsilon, args, gradientValue);
+                        }
+                        //LoggerEvs.writeLog(string.Format("Step 4: Alpha = {0};", alpha));
+                        // Шаг 5                    
+                        args = args - alpha * gradientValue;
+                        //LoggerEvs.writeLog(string.Format("Step 5: arguments = arguments - alpha * gradientValue = ({0}; {1});", args.X, args.Y));
+                        // Шаг 6
+                        k += 1;
+                        //LoggerEvs.writeLog(string.Format("Step 6: k = k + 1 = {0};", k - 1));
+                    }
+                }        
             }
             // Шаг 7
             // Положить

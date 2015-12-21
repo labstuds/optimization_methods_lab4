@@ -67,11 +67,31 @@ namespace FourthLabWork
             double result = 0;
             foreach(var limit in Limitations)
             {
-
                 result += (1 / Math.Abs(limit.Formula(new Vector2(x[0], x[1]))));
-
             }
             return result;
+        }
+        /// <summary>
+        /// Проверить превышение ограничений
+        /// </summary>
+        /// <param name="args">Входные аргументы</param>
+        /// <returns></returns>
+        public bool checkLimitations(Vector2 args)
+        {
+            bool limitsOk = true;
+            foreach (var limit in Limitations)
+            {
+                if (limit.Formula(args) < 0)
+                    limitsOk = false;                
+            }
+            return limitsOk;
+        }
+
+        public Vector2 returnArgsToHome(Vector2 args)
+        {
+            Vector2 answer = new Vector2();
+
+            return answer;
         }
     }
 }
