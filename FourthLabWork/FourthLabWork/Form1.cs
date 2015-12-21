@@ -13,12 +13,13 @@ namespace FourthLabWork
 {
     public partial class Form1 : Form
     {
-        Func<Vector2, double> currentTaskFunction;
-
+        // Учебные и тестовые задачи
+        List<MinimizationTask> tasks = new List<MinimizationTask>();
+        
         public Form1()
         {
             InitializeComponent();
-        }      
+        }             
 
         private void btnCount_Click(object sender, EventArgs e)
         {
