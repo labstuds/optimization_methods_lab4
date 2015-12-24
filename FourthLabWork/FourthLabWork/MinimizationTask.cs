@@ -67,7 +67,8 @@ namespace FourthLabWork
             double result = 0;
             foreach(var limit in Limitations)
             {
-                result += (1 / Math.Abs(limit.Formula(new Vector2(x[0], x[1]))));
+                double s =  (limit.Formula(x));
+                result += 1/s;
             }
             return result;
         }

@@ -20,7 +20,13 @@ namespace FourthLabWork
         {
             InitializeComponent();
             InitTasks();
+            LoggerEvsLib.LoggerEvs.messageCame += printMessage;
         }             
+
+        public void printMessage(string a)
+        {
+            rtbLog.AppendText(a);
+        }
 
         public double testFunc(Vector2 arg)
         {
@@ -29,7 +35,7 @@ namespace FourthLabWork
 
         public double testLimit(Vector2 arg)
         {
-            return - arg.X - arg.Y - 2;
+            return (0-arg.X-arg.Y + 2);
         }
 
         public double secondTestLimit(Vector2 arg)
@@ -37,15 +43,34 @@ namespace FourthLabWork
             return arg.X - 1;
         }
 
+        // Учебная задача 2.1
+        public double firstFunc(Vector2 arg)
+        {
+            double result = Math.Pow((arg.X + 1), 3)/3 + arg.Y;
+            return result;
+                
+        }
+
+        public double firstFuncLim_1(Vector2 arg)
+        {
+            return arg.X - 1;
+        }
+
+        public double firstFuncLim_2(Vector2 arg)
+        {
+            return arg.Y;
+        }
         /// <summary>
         /// Инициализировать задачи 
         /// </summary>
         private void InitTasks()
         {
             // Тестовая задача 1.1
-            MinimizationTask testTask = new MinimizationTask(new List<Limitation> { new Limitation(testLimit,true,true,false),new Limitation(secondTestLimit,true,true,false)}, testFunc);
-            tasks.Add(testTask);
+            MinimizationTask currentTask = new MinimizationTask(new List<Limitation> { new Limitation(testLimit,true,true,false),new Limitation(secondTestLimit,true,true,false)}, testFunc);
+            tasks.Add(currentTask);
             // Учебная задача 2.1
+            currentTask = new MinimizationTask(new List<Limitation> { new Limitation(firstFuncLim_1, true, true, false), new Limitation(firstFuncLim_2, true, true, false) }, firstFunc);
+            tasks.Add(currentTask);
             // Учебная задача 2.2
             // Учебная задача 2.3
         }

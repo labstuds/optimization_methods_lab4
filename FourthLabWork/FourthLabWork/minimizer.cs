@@ -19,28 +19,41 @@ namespace FourthLabWork
         public void minimize()
         {
             int k = 0;
+            LoggerEvsLib.LoggerEvs.writeLog("Step 1: k=0");
             Vector2 x=Task.x0;
             Vector2 x_r=new Vector2();
             double B;
             double F;
             do
             {
+                
                 //step2
                 F=Task.ModifiedFunction(x);
+                LoggerEvsLib.LoggerEvs.writeLog("Step 2: F(f(x),r) = " + F);
+                LoggerEvsLib.LoggerEvs.writeLog("x = "+x);
                 //step3
-                x_r=OptimalGradientMethod.findMinimum(x, Task.eps, Task.ModifiedFunction,Task);
+                DFPSolver s = new DFPSolver();
+
+                x_r=s.returnApproximateSolution(x,Task.eps,Task.ModifiedFunction);
+                //x_r = OptimalGradientMethod.findMinimum(x, Task.eps, Task.Formula, Task);
+                //OptimalGradientMethod.findMinimum(x, Task.eps, Task.ModifiedFunction,Task);
                 double mfv = Task.ModifiedFunction(x_r);
-                double defaul = Task.ModifiedFunction(new Vector2(1, 1));
+                LoggerEvsLib.LoggerEvs.writeLog("Step 3: x_r = " + x_r + ", F(x_r) = " + x_r);
+                double defaul = Task.Formula(x_r);
+                LoggerEvsLib.LoggerEvs.writeLog("f(x) = "+defaul);
                 //step4
                 B = Task.LimitationsForceSumm(x_r)*Task.r0;
+                LoggerEvsLib.LoggerEvs.writeLog("Step 4: B(x_r,r) = " + B);
                 //step5
                 Task.r0*=Task.z;
                 x=x_r;
                 k++;
+                LoggerEvsLib.LoggerEvs.writeLog("Step 5: Next Iteration " + (k + 1));
             }while(Math.Abs(B)>Task.eps);
             //step6
             Task.MinimumPoint = x_r;
             Task.MinimumValue = Task.Formula(x_r);
+            LoggerEvsLib.LoggerEvs.writeLog("Step 6: Stop Criteria. x ~= " + x + ", f(x) ~= " + Task.MinimumValue);
         }
     }
     public class LinearInterval

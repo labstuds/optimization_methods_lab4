@@ -236,7 +236,7 @@
             this.nudZ.Size = new System.Drawing.Size(79, 20);
             this.nudZ.TabIndex = 10;
             this.nudZ.Value = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             65536});
@@ -313,6 +313,11 @@
             0,
             65536});
             this.nudX2.Location = new System.Drawing.Point(57, 48);
+            this.nudX2.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.nudX2.Name = "nudX2";
             this.nudX2.Size = new System.Drawing.Size(120, 20);
             this.nudX2.TabIndex = 2;
@@ -326,6 +331,11 @@
             0,
             65536});
             this.nudX1.Location = new System.Drawing.Point(57, 22);
+            this.nudX1.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.nudX1.Name = "nudX1";
             this.nudX1.Size = new System.Drawing.Size(120, 20);
             this.nudX1.TabIndex = 0;

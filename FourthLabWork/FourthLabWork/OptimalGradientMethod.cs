@@ -22,7 +22,7 @@ namespace FourthLabWork
             double dichotomyEpsilon = countDichotomyEps(inputOrder);
             double alpha = countStartAlphaStep(inputOrder);
             // Шаг для метода одномерной отпитизации ДСК            
-            double DSKStep = countDSKStep(inputOrder);
+            double DSKStep = 0.001;
             
             //LoggerEvs.writeLog("Optimal gradient method started!");
             Vector2 answer = new Vector2();
@@ -35,21 +35,16 @@ namespace FourthLabWork
             int k = 0;            
             while (!answerFound)
             {
-                if (!task.checkLimitations(args))
+                if(k>=1000)
                 {
                     answerFound = true;
                 }
-                else
-                {
                     //LoggerEvs.writeLog(string.Format("ITER {0}:", k));
                     //LoggerEvs.writeLog(string.Format("Step 1: k = {0};", k));
 
                     gradientValue = CountCentralScheme.Instance.countDerivative(0.1, args, taskFunction);
 
-                    if (alpha >= 0.00001)
-                        gradientValue = CountCentralScheme.Instance.countDerivative(alpha, args, taskFunction);
-                    else
-                        gradientValue = CountRightScheme.Instance.countDerivative(alpha, args, taskFunction);
+
 
                     //LoggerEvs.writeLog(string.Format("Step 2: gradient is ({0}, {1});", gradientValue.X, gradientValue.Y));
                     // Шаг 3
@@ -65,7 +60,7 @@ namespace FourthLabWork
                         // Провести метод одномерной оптимизации
                         if (alpha >= 0)
                         {
-                            Interval alphaValues = DSKMethodCounter.countInterval(taskFunction, alpha, args, gradientValue, DSKStep);
+                            Interval alphaValues = DSKMethodCounter.countInterval(taskFunction, alpha, args, gradientValue, DSKStep,task);
                             alpha = DichotomyMethodCounter.findMinimum(taskFunction, alphaValues, dichotomyEpsilon, args, gradientValue);
                         }
                         //LoggerEvs.writeLog(string.Format("Step 4: Alpha = {0};", alpha));
@@ -77,7 +72,7 @@ namespace FourthLabWork
                         //LoggerEvs.writeLog(string.Format("Step 6: k = k + 1 = {0};", k - 1));
                     }
                 }        
-            }
+            
             // Шаг 7
             // Положить
             answer = args;
